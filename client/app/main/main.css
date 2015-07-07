@@ -21,6 +21,15 @@
     height: 200px;
 }
 
+.login-signup {
+    background-color: grey;
+    padding: 10px;
+}
+
+input, button {
+    margin: 5px;
+}
+
 @media (max-width: 992px) {
     .right {
         float: right;
