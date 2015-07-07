@@ -1,8 +1,7 @@
-.left {
+.right {
     float: right;
     position: relative;
-    top: 15px;
-    left: -5px;
+    top: 35px;
 } 
 
 .images {
@@ -15,4 +14,18 @@
 
 .thumbnail > i {
     cursor: pointer;
+}
+
+.thumbnail > img {
+    width: 300px;
+    height: 200px;
+}
+
+@media (max-width: 992px) {
+    .right {
+        float: right;
+        position: relative;
+        top: -5px;
+        left: -60px;
+    } 
 }
