@@ -8,9 +8,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<form class="login-signup text-center" name="mainLogin" submit="login(mainLogin)">
-				<input type="text" placeholder="email"><input type="password" placeholder="password"><br>
-				<button class="btn btn-inverse btn-login" type="submit">Login</button><a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Connect with Twitter</a>
+			<form class="login-signup text-center" name="loginForm">
+				<input type="email" placeholder="email" ng-model="user.email"><input type="password" placeholder="password" ng-model="user.password"><br>
+				<button class="btn btn-inverse btn-login" ng-click="login(loginForm)">Login</button><a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Connect with Twitter</a>
 			</form>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="input-group">
-				<input type="text" class="form-control" ng-model="imgUrl">
+				<input type="text" class="form-control" placeholder="Enter image url..." ng-model="imgUrl">
 				<span class="input-group-btn">
 					<button class="btn btn-default" ng-click="addImage()">Add</button>
 				</span>

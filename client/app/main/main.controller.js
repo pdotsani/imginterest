@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imginterestApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $http, Auth, imageSvc) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, Auth, imageSvc) {
     $scope.user = {};
     $scope.errors = {};
     $scope.imgUrl;
@@ -16,19 +16,15 @@ angular.module('imginterestApp')
     });
 
     $scope.addImage = function() {
-    	console.log($scope.imgUrl);
-    	console.log(Auth.getCurrentUser()._id);
     	// Save Image
     	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
-    	console.log($scope.imgs)
     	$scope.imgUrl = '';
     }
 
     $scope.delImage = function(imgId) {
-    	console.log(imgId);
     	imageSvc.deleteImage(imgId);
         $rootScope.$broadcast('load-images');
     }
