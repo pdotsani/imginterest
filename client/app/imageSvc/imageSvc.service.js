@@ -3,8 +3,8 @@
 angular.module('imginterestApp')
   .service('imageSvc', function ($http) {
     return {
-    	saveImage: function(imageUrl, userId) {
-    		$http.post('/api/images/', {url: imageUrl, ownerId: userId})
+    	saveImage: function(imageUrl, userId, userName) {
+    		$http.post('/api/images/', {url: imageUrl, ownerId: userId, owner: userName})
     			.success(function(data){
                     console.log("Image saved to db!");
     		});

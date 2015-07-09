@@ -5,6 +5,10 @@ angular.module('imginterestApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+      'title': 'All Users',
+      'link': '/allUsers'
     }];
 
     $scope.isCollapsed = true;

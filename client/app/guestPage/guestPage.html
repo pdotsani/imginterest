@@ -1,0 +1,15 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container-fluid" ng-show="isLoggedIn()">
+	<div class="row images">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+				<div class="col-xs-6 col-md-4" ng-repeat="img in imgs">
+					<div class="thumbnail">
+						<img src="{{img.url}}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

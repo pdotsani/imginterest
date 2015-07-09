@@ -5,19 +5,25 @@ angular.module('imginterestApp')
     $scope.user = {};
     $scope.errors = {};
     $scope.imgUrl;
+    $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
     
     // Load Images
     $scope.$on('load-images', function(){
+      $scope.imgs = [];
     	$http.get('/api/images/').success(function(data){
-    	   $scope.imgs = data;
-    	   console.log($scope.imgs); 
+    	    data.forEach(function(image){
+            if(image.ownerId === Auth.getCurrentUser()._id) {
+              $scope.imgs.push(image);
+            }
+            console.log($scope.imgs);
+          })
         });
     });
 
     $scope.addImage = function() {
     	// Save Image
-    	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id);
+    	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id, Auth.getCurrentUser().name);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
@@ -26,7 +32,7 @@ angular.module('imginterestApp')
 
     $scope.delImage = function(imgId) {
     	imageSvc.deleteImage(imgId);
-        $rootScope.$broadcast('load-images');
+      $rootScope.$broadcast('load-images');
     }
 
     $scope.login = function(form) {
