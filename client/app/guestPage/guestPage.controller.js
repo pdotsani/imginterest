@@ -11,7 +11,7 @@ angular.module('imginterestApp')
         if(image.owner === $scope.userName) {
           $scope.imgs.push(image);
         }
-      })
+      }) 
       console.log($scope.imgs);
     });
   });
