@@ -10,10 +10,6 @@ angular.module('imginterestApp')
     
     // Load Images
     $scope.$on('load-images', function(){
-      $scope.loadImages();
-    });
-
-    $scope.loadImages = function() {
       $scope.imgs = [];
       $http.get('/api/images/').success(function(data){
         data.forEach(function(image){
@@ -23,7 +19,7 @@ angular.module('imginterestApp')
         });
         console.log($scope.imgs);
       });
-    };
+    });
 
     $scope.addImage = function() {
     	// Save Image
@@ -61,5 +57,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $scope.loadImages();
+    $rootScope.$broadcast('load-images');
   });
