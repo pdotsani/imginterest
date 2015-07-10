@@ -10,8 +10,8 @@ angular.module('imginterestApp')
 	    data.forEach(function(image){
         if(image.owner === $scope.userName) {
           $scope.imgs.push(image);
-        }
-      }) 
+        };
+      }); 
       console.log($scope.imgs);
     });
   });

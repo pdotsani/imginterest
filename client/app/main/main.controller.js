@@ -6,7 +6,7 @@ angular.module('imginterestApp')
     $scope.errors = {};
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.imgUrl;
+    $scope.imgUrl = '';
     
     // Load Images
     $scope.$on('load-images', function(){
@@ -20,10 +20,10 @@ angular.module('imginterestApp')
           if(image.ownerId === Auth.getCurrentUser()._id) {
             $scope.imgs.push(image);
           }
-        })
+        });
         console.log($scope.imgs);
       });
-    }
+    };
 
     $scope.addImage = function() {
     	// Save Image
@@ -32,12 +32,12 @@ angular.module('imginterestApp')
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
     	$scope.imgUrl = '';
-    }
+    };
 
     $scope.delImage = function(imgId) {
     	imageSvc.deleteImage(imgId);
       $rootScope.$broadcast('load-images');
-    }
+    };
 
     $scope.login = function(form) {
       $scope.submitted = true;

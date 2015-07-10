@@ -5,14 +5,14 @@ angular.module('imginterestApp')
     return {
     	saveImage: function(imageUrl, userId, userName) {
     		$http.post('/api/images/', {url: imageUrl, ownerId: userId, owner: userName})
-    			.success(function(data){
-                    console.log("Image saved to db!");
+    			.success(function(){
+                console.log('image added!');
     		});
     	},
     	deleteImage: function(imgId) {
-    		$http.delete('/api/images/'+imgId).success(function(data){
-                console.log("Image deleted from db!");
-    		})
+    		$http.delete('/api/images/'+imgId).success(function(){
+                console.log('image deleted!');
+    		});
     	}
     }
   });
