@@ -4,6 +4,10 @@
     top: 35px;
 } 
 
+.header-landing {
+    font-family: signerica-fat;
+}
+
 .images {
     margin-top: 20px;
 }
@@ -26,12 +30,20 @@
 }
 
 .login-signup {
-    background-color: grey;
+    background-color: transparent;
     padding: 10px;
 }
 
-input, button {
+input, .btn-default, .btn-twitter {
     margin: 5px;
+}
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    padding-top: 200px;
+    background-image: url('http://r.b5z.net/i/u/10062450/i/pdir/153/i/2-pic_025.jpg?ab=19');
+    background-size: cover;
 }
 
 @media (max-width: 992px) {
@@ -40,5 +52,12 @@ input, button {
         position: relative;
         top: -5px;
         left: -60px;
-    } 
+    }
+    .login {
+        background-image: none;
+        background-color: white;
+    }
+    .header-landing {
+        text-align: center;
+    }
 }

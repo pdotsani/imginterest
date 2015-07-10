@@ -4,22 +4,26 @@ angular.module('imginterestApp')
   .controller('MainCtrl', function ($rootScope, $scope, $http, $location, Auth, imageSvc) {
     $scope.user = {};
     $scope.errors = {};
-    $scope.imgUrl;
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.imgUrl;
     
     // Load Images
     $scope.$on('load-images', function(){
-      $scope.imgs = [];
-    	$http.get('/api/images/').success(function(data){
-    	    data.forEach(function(image){
-            if(image.ownerId === Auth.getCurrentUser()._id) {
-              $scope.imgs.push(image);
-            }
-            console.log($scope.imgs);
-          })
-        });
+      $scope.loadImages();
     });
+
+    $scope.loadImages = function() {
+      $scope.imgs = [];
+      $http.get('/api/images/').success(function(data){
+        data.forEach(function(image){
+          if(image.ownerId === Auth.getCurrentUser()._id) {
+            $scope.imgs.push(image);
+          }
+        })
+        console.log($scope.imgs);
+      });
+    }
 
     $scope.addImage = function() {
     	// Save Image

@@ -1,16 +1,16 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/navbar.html'" ng-show="isLoggedIn()"></div>
 
-<div class="container-fluid" ng-hide="isLoggedIn()">
+<div class="container-fluid login" ng-hide="isLoggedIn()">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<h1>imageintrest</h1>
+			<h1 class="header-landing">imginterest</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			<form class="login-signup text-center" name="loginForm">
 				<input type="email" placeholder="email" ng-model="user.email"><input type="password" placeholder="password" ng-model="user.password"><br>
-				<button class="btn btn-inverse btn-login" ng-click="login(loginForm)">Login</button><a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Connect with Twitter</a>
+				<button class="btn btn-default" ng-click="login(loginForm)">Login</button><a class="btn btn-default" ng-href="/signup">Sign Up</a><a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')"><i class="fa fa-twitter"></i> Connect with Twitter</a>
 			</form>
 		</div>
 	</div>

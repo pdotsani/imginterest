@@ -31,9 +31,30 @@
  * App-wide Styles
  */
 
+@font-face {
+    font-family: 'signerica-fat';
+    src: url('../assets/fonts/signerica/Signerica_Fat.ttf');
+}
+
+.navbar-brand {
+    font-family: signerica-fat;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+}
+
+.backdrop {
+    padding-top: 100px;
+    background-image: url('http://r.b5z.net/i/u/10062450/i/pdir/153/i/2-pic_025.jpg?ab=19');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.navbar {
+    margin-bottom: 0;
 }
