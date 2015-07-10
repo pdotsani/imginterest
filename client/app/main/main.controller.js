@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imginterestApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, Auth, imageSvc) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, Auth, imageSvc, $window) {
     $scope.user = {};
     $scope.errors = {};
     $scope.imgs = [];
@@ -61,5 +61,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $rootScope.$broadcast('load-images');
+    $scope.loadImages();
   });
