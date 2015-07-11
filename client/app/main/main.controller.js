@@ -6,6 +6,7 @@ angular.module('imginterestApp')
     $scope.errors = {};
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.userId = Auth.getCurrentUser()._id;
     $scope.imgUrl = '';
     
     // Load Images
@@ -13,7 +14,7 @@ angular.module('imginterestApp')
       $http.get('/api/images/').success(function(data){
             $scope.imgs = [];
         data.forEach(function(image){
-          if(image.ownerId === Auth.getCurrentUser()._id) {
+          if(image.ownerId === $scope.userId) {
             $scope.imgs.push(image);
           }
         });
@@ -23,7 +24,7 @@ angular.module('imginterestApp')
 
     $scope.addImage = function() {
     	// Save Image
-    	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id, Auth.getCurrentUser().name);
+    	imageSvc.saveImage($scope.imgUrl, $scope.userId, Auth.getCurrentUser().name);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
@@ -46,7 +47,6 @@ angular.module('imginterestApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/');
-          $rootScope.$broadcast('load-images');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
@@ -58,5 +58,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    // $rootScope.$broadcast('load-images');
+    $rootScope.$broadcast('load-images');
   });
