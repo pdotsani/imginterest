@@ -17,7 +17,6 @@ angular.module('imginterestApp')
             $scope.imgs.push(image);
           }
         });
-        $route.reload();
         console.log($scope.imgs);
       });
     });
@@ -58,5 +57,14 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $rootScope.$broadcast('load-images');
+    $http.get('/api/images/').success(function(data){
+      $scope.imgs = [];
+      data.forEach(function(image){
+        if(image.ownerId === Auth.getCurrentUser()._id) {
+          $scope.imgs.push(image);
+        }
+      });
+      $route.reload();
+      console.log($scope.imgs);
+    });
   });
