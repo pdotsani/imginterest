@@ -57,14 +57,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $http.get('/api/images/').success(function(data){
-      $scope.imgs = [];
-      data.forEach(function(image){
-        if(image.ownerId === Auth.getCurrentUser()._id) {
-          $scope.imgs.push(image);
-        }
-      });
-      $route.reload();
-      console.log($scope.imgs);
-    });
+    $rootScope.$broadcast('load-images');
   });
