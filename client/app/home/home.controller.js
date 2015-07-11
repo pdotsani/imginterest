@@ -4,7 +4,9 @@ angular.module('imginterestApp')
   .controller('HomeCtrl', function ($rootScope, $scope, $http, $location, $route, Auth, imageSvc, $window) {
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.currentUser = Auth.getCurrentUser();
     $scope.imgUrl = '';
+    console.log($scope.currentUser);
     
     // Clear Images
     $scope.$on('clear-images', function(){
@@ -16,12 +18,11 @@ angular.module('imginterestApp')
       $http.get('/api/images/').success(function(data){
             var tmpimgs = [];
         data.forEach(function(image){
-          if(image.owner === Auth.getCurrentUser().name) {
+          if(image.owner === $scope.currentUser.name) {
             tmpimgs.push(image);
           }
         });
         $scope.imgs = tmpimgs;
-        console.log(Auth.getCurrentUser());
         console.log($scope.imgs);
       });
     });
