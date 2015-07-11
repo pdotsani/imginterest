@@ -4,7 +4,7 @@ angular.module('imginterestApp')
   .controller('NavbarCtrl', function ($scope, $location, $rootScope, Auth) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/home'
     },
     {
       'title': 'All Users',
