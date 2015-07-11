@@ -11,12 +11,13 @@ angular.module('imginterestApp')
     // Load Images
     $scope.$on('load-images', function(){
       $http.get('/api/images/').success(function(data){
-            $scope.imgs = [];
+            $var tmpimgs = [];
         data.forEach(function(image){
           if(image.owner === Auth.getCurrentUser().name) {
-            $scope.imgs.push(image);
+            tmpimgs.push(image);
           }
         });
+        $scope.imgs = tmpimgs;
         console.log(Auth.getCurrentUser());
         console.log($scope.imgs);
       });
