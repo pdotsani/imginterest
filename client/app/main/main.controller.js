@@ -6,7 +6,6 @@ angular.module('imginterestApp')
     $scope.errors = {};
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.userId = Auth.getCurrentUser()._id;
     $scope.imgUrl = '';
     
     // Load Images
@@ -14,11 +13,11 @@ angular.module('imginterestApp')
       $http.get('/api/images/').success(function(data){
             $scope.imgs = [];
         data.forEach(function(image){
-          if(image.ownerId === $scope.userId) {
+          if(image.ownerId === Auth.getCurrentUser()._id) {
             $scope.imgs.push(image);
           }
         });
-        console.log($scope.userId);
+        console.log(Auth.getCurrentUser()._id);
         console.log($scope.imgs);
       });
     });
