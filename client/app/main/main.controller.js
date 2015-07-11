@@ -17,14 +17,14 @@ angular.module('imginterestApp')
             $scope.imgs.push(image);
           }
         });
-        console.log(Auth.getCurrentUser()._id);
+        console.log(Auth.getCurrentUser());
         console.log($scope.imgs);
       });
     });
 
     $scope.addImage = function() {
     	// Save Image
-    	imageSvc.saveImage($scope.imgUrl, $scope.userId, Auth.getCurrentUser().name);
+    	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id, Auth.getCurrentUser().name);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
@@ -61,5 +61,4 @@ angular.module('imginterestApp')
     };
 
     $rootScope.$broadcast('load-images');
-    $route.reload();
   });
