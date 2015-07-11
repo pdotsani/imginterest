@@ -11,9 +11,9 @@ angular.module('imginterestApp')
     // Load Images
     $scope.$on('load-images', function(){
       $http.get('/api/images/').success(function(data){
+        $scope.imgs = [];
         data.forEach(function(image){
           if(image.ownerId === Auth.getCurrentUser()._id) {
-            $scope.imgs = [];
             $scope.imgs.push(image);
           }
         });
