@@ -7,7 +7,12 @@ angular.module('imginterestApp')
     $scope.imgs = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.imgUrl = '';
-    console.log(Auth.getCurrentUser().name);
+    
+    // Clear Images
+    $scope.$on('clear-images', function(){
+      $scope.imgs = [];
+    });
+
     // Load Images
     $scope.$on('load-images', function(){
       $http.get('/api/images/').success(function(data){

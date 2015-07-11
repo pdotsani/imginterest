@@ -18,7 +18,7 @@ angular.module('imginterestApp')
 
     $scope.logout = function() {
       Auth.logout();
-      $rootScope.$broadcast('load-images');
+      $rootScope.$broadcast('clear-images');
       $location.path('/');
     };
 
