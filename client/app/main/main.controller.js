@@ -50,8 +50,8 @@ angular.module('imginterestApp')
         .catch( function(err) {
           $scope.errors.other = err.message;
         });
+        $rootScope.$broadcast('load-images');
       }
-      $rootScope.$broadcast('load-images');
     };
 
     $scope.loginOauth = function(provider) {
