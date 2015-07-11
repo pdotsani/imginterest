@@ -29,7 +29,7 @@ angular.module('imginterestApp')
 
     $scope.addImage = function() {
     	// Save Image
-    	imageSvc.saveImage($scope.imgUrl, Auth.getCurrentUser()._id, Auth.getCurrentUser().name);
+    	imageSvc.saveImage($scope.imgUrl, $scope.currentUser._id, $scope.currentUser.name);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
