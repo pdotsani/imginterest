@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imginterestApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, Auth, imageSvc, $window) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $route, Auth, imageSvc, $window) {
     $scope.user = {};
     $scope.errors = {};
     $scope.imgs = [];
@@ -11,12 +11,13 @@ angular.module('imginterestApp')
     // Load Images
     $scope.$on('load-images', function(){
       $http.get('/api/images/').success(function(data){
-        $scope.imgs = [];
+            $scope.imgs = [];
         data.forEach(function(image){
           if(image.ownerId === Auth.getCurrentUser()._id) {
             $scope.imgs.push(image);
           }
         });
+        $route.reload();
         console.log($scope.imgs);
       });
     });
@@ -57,13 +58,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $http.get('/api/images/').success(function(data){
-      $scope.imgs = [];
-      data.forEach(function(image){
-        if(image.ownerId === Auth.getCurrentUser()._id) {
-          $scope.imgs.push(image);
-        }
-      });
-      console.log($scope.imgs);
-    });
+    $rootScope.$broadcast('load-images');
   });
