@@ -51,6 +51,7 @@ angular.module('imginterestApp')
           $scope.errors.other = err.message;
         });
       }
+      $rootScope.$broadcast('load-images');
     };
 
     $scope.loginOauth = function(provider) {
