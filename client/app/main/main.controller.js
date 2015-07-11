@@ -61,4 +61,5 @@ angular.module('imginterestApp')
     };
 
     $rootScope.$broadcast('load-images');
+    $route.reload();
   });
