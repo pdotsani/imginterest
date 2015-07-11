@@ -46,11 +46,11 @@ angular.module('imginterestApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/');
+          $rootScope.$broadcast('load-images');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
         });
-        $rootScope.$broadcast('load-images');
       }
     };
 
@@ -58,5 +58,5 @@ angular.module('imginterestApp')
       $window.location.href = '/auth/' + provider;
     };
 
-    $rootScope.$broadcast('load-images');
+    // $rootScope.$broadcast('load-images');
   });
