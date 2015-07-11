@@ -18,6 +18,7 @@ angular.module('imginterestApp')
             $scope.imgs.push(image);
           }
         });
+        console.log($scope.userId);
         console.log($scope.imgs);
       });
     });
@@ -47,6 +48,8 @@ angular.module('imginterestApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/');
+          $scope.user.email = '';
+          $scope.user.password = '';
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
