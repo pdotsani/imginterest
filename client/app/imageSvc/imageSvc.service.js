@@ -12,8 +12,6 @@ angular.module('imginterestApp')
     	deleteImage: function(imgId) {
     		$http.delete('/api/images/'+imgId).success(function(){
                 console.log('image deleted!');
-                $rootScope.$broadcast('load-images');
-                $route.reload();
     		});
     	}
     }
