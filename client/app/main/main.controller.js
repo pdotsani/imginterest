@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imginterestApp')
-  .controller('MainCtrl', function ($scope, $http, $location, Auth) {
+  .controller('MainCtrl', function ($scope, $http, $location, Auth, $window) {
     $scope.user = {};
     $scope.errors = {};
 
