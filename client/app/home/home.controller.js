@@ -39,7 +39,6 @@ angular.module('imginterestApp')
 
     $scope.delImage = function(imgId) {
     	imageSvc.deleteImage(imgId);
-      $route.reload();
     };
 
     $rootScope.$broadcast('load-images');
