@@ -34,6 +34,7 @@ angular.module('imginterestApp')
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
     	$scope.imgUrl = '';
+      $route.reload();
     };
 
     $scope.delImage = function(imgId) {
