@@ -6,7 +6,6 @@ angular.module('imginterestApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.currentUser = Auth.getCurrentUser;
     $scope.imgUrl = '';
-    console.log($scope.currentUser());
     
     // Clear Images
     $scope.$on('clear-images', function(){
