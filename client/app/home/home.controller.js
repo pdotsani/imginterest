@@ -14,6 +14,7 @@ angular.module('imginterestApp')
 
     // Load Images
     $scope.$on('load-images', function(){
+      // Abstract this!
       $http.get('/api/images/').success(function(data){
         var tmpimgs = [];
         data.forEach(function(image){
@@ -28,7 +29,10 @@ angular.module('imginterestApp')
 
     $scope.addImage = function() {
     	// Save Image
-    	imageSvc.saveImage($scope.imgUrl, $scope.currentUser()._id, $scope.currentUser().name);
+    	imageSvc
+        .saveImage($scope.imgUrl, 
+          $scope.currentUser()._id, 
+          $scope.currentUser().name);
     		
     	// Refresh Image Cache
     	$rootScope.$broadcast('load-images');
