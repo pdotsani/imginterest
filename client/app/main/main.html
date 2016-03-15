@@ -4,7 +4,11 @@
 			<h1 class="header-landing">imginterest</h1>
 		</div>
 	</div>
+  <hr>
 	<div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center" ng-show="onLogin">
+      <h1>Login</h1>
+    </div>
 		<div class="col-md-4 col-md-offset-4" ng-show="onLogin">
 			<form class="login-signup text-center" name="loginForm" ng-submit="login(loginForm)">
 				<div class="form-group">
@@ -13,28 +17,26 @@
 				<div class="form-group">
 				</div>
 				<div class="form-group has-error">
-          			<p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
-          				Please enter your email and password.</p>
-          			<p class="help-block" ng-show="form.email.$error.email && submitted">
-             			Please enter a valid email.</p>
-          			<p class="help-block">{{ errors.other }}</p>
-        		</div>
-        		<button class="btn btn-default btn-lg" ng-click="submit">Login</button>
-			</form>
-			<button class="btn btn-inverse btn-lg" ng-click="toggleLoginSignup()">Sign Up</button>
+      			<p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+      				Please enter your email and password.</p>
+      			<p class="help-block" ng-show="form.email.$error.email && submitted">
+         			Please enter a valid email.</p>
+      			<p class="help-block">{{ errors.other }}</p>
+    		</div>
+    		<button class="btn btn-default btn-lg" type="submit">Login</button>
+  			<button type="button" class="btn btn-inverse btn-lg" ng-click="toggleLoginSignup()">Sign Up</button>
+      </form>
 		</div>
 	</div>
-    <div class="col-md-4 col-md-offset-4" ng-hide="!onLogin">
+    <div class="col-md-4 col-md-offset-4 text-center" ng-show="!onLogin">
       <h1>Sign up</h1>
     </div>
-    <div class="col-md-4 col-md-offset-4" ng-hide="!onLogin">
+    <div class="col-md-4 col-md-offset-4" ng-show="!onLogin">
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-          <label>Name</label>
-
-          <input type="text" name="name" class="form-control" ng-model="user.name"
+          <input type="text" name="name" class="form-control" ng-model="user.name" placeholder="Name" 
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted">
             A name is required
@@ -43,9 +45,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
-          <label>Email</label>
-
-          <input type="email" name="email" class="form-control" ng-model="user.email"
+          <input type="email" name="email" class="form-control" ng-model="user.email" placeholder="Email" 
                  required
                  mongoose-error/>
           <p class="help-block" ng-show="form.email.$error.email && submitted">
@@ -61,9 +61,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
-          <label>Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="user.password"
+          <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password" 
                  ng-minlength="3"
                  required
                  mongoose-error/>
@@ -80,9 +78,9 @@
           <button class="btn btn-default btn-lg" type="submit">
             Register
           </button>
+          <button class="btn btn-inverse btn-lg" type="button" ng-click="toggleLoginSignup()">Go to Login</button>
         </div>
       </form>
-      <button class="btn btn-inverse btn-lg" ng-click="toggleLoginSignup()">
-            Go to Login</button>
+            
     </div>
 </div>
