@@ -42,6 +42,8 @@ angular.module('imginterestApp')
         .then( function() {
           // Account created, redirect to home
           $location.path('/');
+          // Switch to login page
+          $scope.onLogin = true;
         })
         .catch( function(err) {
           err = err.data;
