@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('imginterestApp')
-  .controller('MainCtrl', function ($scope, $http, $location, Auth, $window) {
+  .controller('MainCtrl', function ($scope, $location, Auth) {
     $scope.onLogin = true;
     $scope.user = {};
     $scope.errors = {};
@@ -41,7 +41,7 @@ angular.module('imginterestApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/home');
           // Switch to login page
           $scope.onLogin = true;
         })
@@ -57,9 +57,4 @@ angular.module('imginterestApp')
         });
       }
     };
-
-    $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
-    };
-
   });

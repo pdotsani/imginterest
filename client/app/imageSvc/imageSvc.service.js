@@ -8,17 +8,11 @@ angular.module('imginterestApp')
                 .post('/api/images/', {
                     url: imageUrl, 
                     ownerId: userId, 
-                    owner: userName })
-    			.success(function(){
-                    console.log('image added!');
-        		});
+                    owner: userName });
     	},
     	deleteImage: function(imgId) {
     		$http
-                .delete('/api/images/'+imgId)
-                .success(function(){
-                    console.log('image deleted!');
-        		});
+                .delete('/api/images/'+imgId);
     	}
     };
   });

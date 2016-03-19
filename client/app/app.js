@@ -10,7 +10,7 @@ angular.module('imginterestApp', [
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({
-        redirectTo: '/main'
+        redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true);
@@ -31,7 +31,7 @@ angular.module('imginterestApp', [
       // Intercept 401s and redirect you to login
       responseError: function(response) {
         if(response.status === 401) {
-          $location.path('/main');
+          $location.path('/');
           // remove any stale tokens
           $cookieStore.remove('token');
           return $q.reject(response);
@@ -48,7 +48,7 @@ angular.module('imginterestApp', [
     $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
-          $location.path('/main');
+          $location.path('/');
         }
       });
     });

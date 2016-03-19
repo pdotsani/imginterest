@@ -8,11 +8,10 @@ angular.module('imginterestApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.homeLink = 
     $scope.logout = function() {
       Auth.logout();
       $rootScope.$broadcast('clear-images');
-      $location.path('/');
+      $location.path('/main');
     };
 
     $scope.isActive = function(route) {

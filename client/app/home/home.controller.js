@@ -2,7 +2,7 @@
 
 angular.module('imginterestApp')
   .controller('HomeCtrl', 
-    function ($rootScope, $scope, $http, $location, $route, Auth, imageSvc) {
+    function ($rootScope, $scope, $http, $route, Auth, imageSvc) {
       $scope.imgs = [];
       $scope.isLoggedIn = Auth.isLoggedIn;
       $scope.currentUser = Auth.getCurrentUser;
@@ -24,7 +24,6 @@ angular.module('imginterestApp')
             }
           });
           $scope.imgs = tmpimgs;
-          console.log($scope.imgs);
         });
       });
 

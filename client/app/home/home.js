@@ -4,7 +4,7 @@ angular.module('imginterestApp')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/home', {
-      	authorization: true,
+      	authenticate: true,
         templateUrl: 'app/home/home.html',
         controller: 'HomeCtrl'
       });
