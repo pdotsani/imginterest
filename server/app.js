@@ -30,3 +30,7 @@ server.listen(config.port, config.ip, function () {
 
 // Expose app
 exports = module.exports = app;
+
+// For heroku functionality
+
+app.listen(process.env.PORT || <default port>)
