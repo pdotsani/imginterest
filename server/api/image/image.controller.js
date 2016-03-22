@@ -7,7 +7,7 @@ var Image = require('./image.model');
 exports.index = function(req, res) {
   Image.find(function (err, images) {
     if(err) { return handleError(res, err); }
-    return res.json(200, images);
+    return res(200).json(images);
   });
 };
 
@@ -16,7 +16,7 @@ exports.show = function(req, res) {
   Image.findById(req.params.id, function (err, image) {
     if(err) { return handleError(res, err); }
     if(!image) { return res.send(404); }
-    return res.json(image);
+    return res(200).json(image);
   });
 };
 
@@ -24,7 +24,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Image.create(req.body, function(err, image) {
     if(err) { return handleError(res, err); }
-    return res.json(201, image);
+    return res(201).json(image);
   });
 };
 
@@ -37,7 +37,7 @@ exports.update = function(req, res) {
     var updated = _.merge(image, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.json(200, image);
+      return res(200).json(image);
     });
   });
 };
